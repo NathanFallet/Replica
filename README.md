@@ -1,4 +1,7 @@
 <div class="page-header">
+	<h1>Replica</h1>
+</div>
+<div class="page-header">
 	<h2 id="i">I. Presentation</h2>
 </div>
 <p>The Replica is a mini game where you have to replica the picture on the table before you the most quickly. The game spends in differents sleeves : the last player who had finished is eradicated.</p>
