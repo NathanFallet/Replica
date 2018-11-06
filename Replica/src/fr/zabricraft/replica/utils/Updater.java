@@ -32,7 +32,7 @@ public class Updater {
 
 	public static void checkForUpdate(Plugin plugin, Player... receive) {
 		try {
-			String url = "https://www.zabricraft.fr/checkforupdate_bukkit_plugins.php?id="
+			String url = "https://www.nathanfallet.me/checkforupdate.php?id="
 					+ plugin.getDescription().getName().toLowerCase() + "&version="
 					+ plugin.getDescription().getVersion();
 
