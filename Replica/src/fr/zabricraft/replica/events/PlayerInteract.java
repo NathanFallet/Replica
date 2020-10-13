@@ -34,7 +34,7 @@ public class PlayerInteract implements Listener {
 	@EventHandler
 	public void onPLayerInteract(PlayerInteractEvent e){
 		if(e.getAction().equals(Action.RIGHT_CLICK_BLOCK) && e.getClickedBlock() != null){
-			if(e.getClickedBlock().getType().equals(Material.SIGN) || e.getClickedBlock().getType().equals(Material.SIGN_POST) || e.getClickedBlock().getType().equals(Material.WALL_SIGN)){
+			if(e.getClickedBlock().getType().equals(Material.OAK_SIGN)){
 				for(Game g : Replica.getInstance().getGames()){
 					for(Location l : g.getSigns()){
 						if(e.getClickedBlock().getLocation().equals(l)){

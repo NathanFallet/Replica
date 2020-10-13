@@ -83,8 +83,7 @@ public class Game {
 		Iterator<Location> i = signs.iterator();
 		while (i.hasNext()) {
 			Block b = i.next().getBlock();
-			if (b != null && (b.getType().equals(Material.SIGN) || b.getType().equals(Material.SIGN_POST)
-					|| b.getType().equals(Material.WALL_SIGN))) {
+			if (b != null && b.getType().equals(Material.OAK_SIGN)) {
 				Sign s = (Sign) b.getState();
 				s.setLine(0, "§4[Replica]");
 				s.setLine(1, Replica.getInstance().getMessages().get("sign-line-game").replaceAll("%d", id + ""));
@@ -121,8 +120,42 @@ public class Game {
 		return result;
 	}
 
-	public ItemStack makeClay(int color) {
-		return new ItemStack(Material.STAINED_CLAY, 64, (byte) color);
+	public Material makeClay(int color) {
+		switch (color) {
+			case 0:
+				return Material.WHITE_TERRACOTTA;
+			case 1:
+				return Material.ORANGE_TERRACOTTA;
+			case 2:
+				return Material.MAGENTA_TERRACOTTA;
+			case 3:
+				return Material.LIGHT_BLUE_TERRACOTTA;
+			case 4:
+				return Material.YELLOW_TERRACOTTA;
+			case 5:
+				return Material.LIME_TERRACOTTA;
+			case 6:
+				return Material.PINK_TERRACOTTA;
+			case 7:
+				return Material.GRAY_TERRACOTTA;
+			case 8:
+				return Material.LIGHT_GRAY_TERRACOTTA;
+			case 9:
+				return Material.CYAN_TERRACOTTA;
+			case 10:
+				return Material.PURPLE_TERRACOTTA;
+			case 11:
+				return Material.BLUE_TERRACOTTA;
+			case 12:
+				return Material.BROWN_TERRACOTTA;
+			case 13:
+				return Material.GREEN_TERRACOTTA;
+			case 14:
+				return Material.RED_TERRACOTTA;
+			case 15:
+				return Material.BLACK_TERRACOTTA;
+		}
+		return null;
 	}
 
 	public void loadPlots() {
@@ -158,8 +191,7 @@ public class Game {
 			for (int z = 5; z < 13; z++) {
 				Block b = new Location(Bukkit.getWorld("Replica"), 14 + Replica.DISTANCE * 16 * (id - 1), 66 + (7 - y),
 						z + col * 32).getBlock();
-				b.setType(Material.STAINED_CLAY);
-				b.setData((byte) p.getBlock(z - 5, y));
+				b.setType(makeClay(p.getBlock(z - 5, y)));
 			}
 		}
 	}
@@ -172,10 +204,7 @@ public class Game {
 						66 + (7 - y), (7 - x) + col * 32 + 5);
 				Location b2 = new Location(Bukkit.getWorld("Replica"), 5 + (7 - y) + Replica.DISTANCE * 16 * (id - 1),
 						64, (7 - x) + col * 32 + 5);
-				if (!b2.getBlock().getType().equals(Material.STAINED_CLAY)) {
-					return false;
-				}
-				if (b.getBlock().getData() != b2.getBlock().getData()) {
+				if (!b.getBlock().getType().equals(b2.getBlock().getType())) {
 					return false;
 				}
 			}
@@ -189,7 +218,7 @@ public class Game {
 			for (int y = 0; y < 8; y++) {
 				Location b = new Location(Bukkit.getWorld("Replica"), 14 + Replica.DISTANCE * 16 * (id - 1),
 						66 + (7 - y), (7 - x) + col * 32 + 5);
-				if (b.getBlock().getData() == (byte) color) {
+				if (b.getBlock().getType().equals(makeClay(color))) {
 					return true;
 				}
 			}
@@ -199,7 +228,6 @@ public class Game {
 
 	public void start() {
 		for (UUID uuid : getPlayers()) {
-			Player p = Bukkit.getPlayer(uuid);
 			ZabriPlayer zp = Replica.getInstance().getPlayer(uuid);
 			zp.setPlaying(true);
 		}
@@ -214,7 +242,6 @@ public class Game {
 			if (p != null) {
 				Bukkit.broadcastMessage("§7"
 						+ Replica.getInstance().getMessages().get("chat-win-public").replaceAll("%s", p.getName()));
-				ZabriPlayer winner = Replica.getInstance().getPlayer(p.getUniqueId());
 				p.getInventory().clear();
 				p.updateInventory();
 				p.setGameMode(GameMode.SPECTATOR);
@@ -278,7 +305,7 @@ public class Game {
 			player.getInventory().addItem(new ItemStack(Material.IRON_PICKAXE));
 			for (int i = 0; i < 16; i++) {
 				if (containsColor(plot, i)) {
-					player.getInventory().addItem(makeClay(i));
+					player.getInventory().addItem(new ItemStack(makeClay(i), 64));
 				}
 			}
 			player.updateInventory();

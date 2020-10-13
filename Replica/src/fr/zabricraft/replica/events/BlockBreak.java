@@ -22,7 +22,6 @@ package fr.zabricraft.replica.events;
 import java.util.UUID;
 
 import org.bukkit.GameMode;
-import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -50,7 +49,7 @@ public class BlockBreak implements Listener {
 				e.setCancelled(true);
 				return;
 			}
-			if(!e.getBlock().getType().equals(Material.STAINED_CLAY)){
+			if(!e.getBlock().getType().toString().endsWith("_TERRACOTTA")){
 				e.setCancelled(true);
 				return;
 			}

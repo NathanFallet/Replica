@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="/Users/zabricraft/Library/Mobile Documents/com~apple~CloudDocs/Workspaces/Libs/Bukkit API.jar"/>
-	<classpathentry kind="lib" path="/Users/zabricraft/Library/Mobile Documents/com~apple~CloudDocs/Workspaces/Libs/ProtocolLib.jar"/>
+	<classpathentry kind="lib" path="/Users/nathanfallet/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Libs/spigot-1.16.3.jar"/>
+	<classpathentry kind="lib" path="/Users/nathanfallet/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Libs/ProtocolLib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

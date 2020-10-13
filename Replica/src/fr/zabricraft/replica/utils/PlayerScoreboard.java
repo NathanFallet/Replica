@@ -50,7 +50,7 @@ public class PlayerScoreboard {
 
 	public void update(Player player, ArrayList<String> newLines){
 		if(objective == null){
-			objective = Bukkit.getScoreboardManager().getNewScoreboard().registerNewObjective(name.toLowerCase(), "dummy");
+			objective = Bukkit.getScoreboardManager().getNewScoreboard().registerNewObjective(name.toLowerCase(), "dummy", name);
 			objective.setDisplayName("§6§l"+name);
 			objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 		}
